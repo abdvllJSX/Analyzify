@@ -1,0 +1,40 @@
+@function toRem($value) {
+    $remValue: (floor(calc($value / 6.73))) + rem;
+    @return $remValue;
+}
+
+@function Rem($value) {
+    $remValue: (floor(calc($value / 16))) + rem;
+    @return $remValue;
+}
+
+
+// normal mobile phone
+@mixin mobile {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+// extra small devices
+@mixin sm-mobile {
+    @media (min-width: 481px) and (max-width: 767px)  {
+        @content;
+    }
+}
+
+// small tablets
+@mixin sm-tablets {
+    @media (mix-width: 768px) and (max-width: 991px) {
+        @content;
+    }
+}
+
+// large tablets and laptops
+
+
+@mixin mobiles {
+    @media (orientation: portrait) {
+        @content
+      }
+}

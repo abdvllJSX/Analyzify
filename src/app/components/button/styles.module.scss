@@ -1,0 +1,18 @@
+@import '../../styles/main.scss';
+
+.btn {
+    background-color: $generic-color;
+    border: none;
+    font-family: "Book";
+    font-size: .8;
+    color: black;
+    cursor: pointer;
+    border-radius: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1em 2em;
+
+    @include mobile{
+        padding: 1em 1.5em;
+    }
+}

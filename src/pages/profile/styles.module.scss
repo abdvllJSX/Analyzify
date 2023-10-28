@@ -1,0 +1,87 @@
+@import "../../app/styles/main.scss";
+
+.profile {
+    padding-left: toRem(80);
+
+    &__container {
+        width: 100%;
+        margin: 0px auto;
+        max-width: 1400px;
+        min-height: 100vh;
+        padding: toRem(80);
+        background-color: $primary;
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            &__image {
+                width: 150px;
+                height: 150px;
+
+                .avater {
+                    border: 2px solid currentcolor;
+                    border-radius: 100%;
+                    padding: 30px;
+
+                    svg {
+                        fill: currentColor;
+                        vertical-align: middle;
+
+                    }
+                }
+            }
+        }
+
+        .user__image {
+            width: 150px;
+            height: 150px;
+
+            img{
+                border-radius: 50%;
+                width: 100%;
+            }
+        }
+
+        .user__name{
+            margin-top: toRem(25);
+            text-align: center;
+            font-family: 'Bold';
+            font-size: toRem(40);
+        }
+        .header__info{
+            display: flex;
+            text-align: center;
+            align-items: center;
+            gap: toRem(30);
+            margin-top: toRem(20);
+
+            .followers{
+                font-size: 2rem;
+                color: $generic-color;
+                font-family: "Medium";
+            }
+
+            p{
+                text-transform: uppercase;
+                margin-top: toRem(6);
+                color: $unActive;
+            }
+        }
+
+        .btn{
+            font-size: 1.5rem;
+            margin-top: toRem(30);
+            font-weight: 700;
+            font-family: 'Book';
+            letter-spacing: 1px;
+            border: 1px solid rgb(255, 255, 255);
+            text-transform: uppercase;
+            text-align: center;
+            padding: 1rem 3.5rem;
+            border-radius: toRem(30);
+        }
+    }
+}

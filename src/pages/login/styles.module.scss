@@ -1,0 +1,67 @@
+@import '../../../src/app/styles/main.scss';
+
+.container {
+    width: 100vw;
+    height: 100dvh;
+    background-color: $secondary-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+
+    .signup__wrapper {
+
+        h1 {
+            font-size: toRem(32);
+            margin-bottom: toRem(17);
+            text-align: center;
+            font-family: 'Book';
+
+            span {
+                color: $generic-color;
+            }
+
+            @include mobile {
+                font-size: toRem(70);
+                margin-bottom: toRem(45);
+                font-family: 'Book';
+                font-weight: 500;
+            }
+        }
+
+
+        .btn {
+            background-color: $generic-color;
+            border: none;
+            font-family: "Book";
+            font-weight: 600;
+            color: black;
+            cursor: pointer;
+            border-radius: 1.5em;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            padding: 1em 2em;
+
+            @include mobile {
+                padding: 1em 1.5em;
+            }
+        }
+    }
+
+    footer {
+        position: absolute;
+        letter-spacing: 1px;
+        color: $generic-color;
+        font-size: 1.2rem;
+        font-family: "Book";
+        bottom: 1rem;
+        justify-self: last baseline;
+
+        @include mobile {
+            font-size: 3.8rem;
+            bottom: 6rem;
+        }
+    }
+}
