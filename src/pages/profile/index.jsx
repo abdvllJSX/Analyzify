@@ -5,19 +5,9 @@ import RootLayout from "@/app/layout";
 import SpotifyWebApi from "spotify-web-api-js";
 import styles from "./styles.module.scss";
 import Link from "next/link";
+import { getAcessToken } from "@/app/get-acesstoken";
 
 const spotifyApi = new SpotifyWebApi();
-// get Token from url
-const getAcessToken = () => {
-    return window.location.hash
-        .substring(1)
-        .split("&")
-        .reduce((initial, item) => {
-            let parts = item.split("=");
-            initial[parts[0]] = decodeURIComponent(parts[1])
-            return initial
-        }, {})
-}
 
 //profile
 const Profile = () => {
@@ -26,9 +16,10 @@ const Profile = () => {
     const [playlist, setPlaylist] = useState([])
     const [followedArtist, setFollowedArtist] = useState([])
     const [topArtist, setTopArtist] = useState([])
+    const [topTracks, setTopTracks] = useState([])
+    const TrackId = []
     useEffect(() => {
         const spotifyToken = getAcessToken().access_token
-        // window.location.hash = ""
 
         if (spotifyToken) {
             setSpotifyToken(spotifyToken)
@@ -50,10 +41,22 @@ const Profile = () => {
             setPlaylist(playlist)
 
         })
-        spotifyApi.getMyTopArtists({time_range: "long_term"}).then((topArtist) => {
-            setTopArtist(topArtist)
+        spotifyApi.getMyTopArtists({ time_range: "long_term", limit: "10" }).then((Artist) => {
+            setTopArtist(Artist.items)
         })
+        spotifyApi.getMyTopTracks({ time_range: "long_term", limit: "10" }).then((track) => {
+            setTopTracks(track.items)
+        })
+
     }, [spotifyApi])
+
+    function convertToMintes(milliseconds) {
+        const minutes = milliseconds / 60000;
+        const minutesString = Math.floor(minutes).toString();
+        const secondsString = ((minutes % 1) * 60).toFixed(0).toString().padStart(2, '0');
+        return `${minutesString}:${secondsString}`;
+    }
+    console.log(topTracks)
     return (
         <div>
             <RootLayout showSidebar={true}>
@@ -95,14 +98,64 @@ const Profile = () => {
                         <div className={styles.content}>
                             <div className={styles.content_right}>
                                 <div className={styles.content_top}>
-                                    <h2>top artist of all time</h2>
+                                    <h2>Top Artists of All Time</h2>
                                     <Link href="">
                                         <button className={styles.btn}>
                                             see more
                                         </button>
                                     </Link>
                                 </div>
-                                <div className={styles.content_bottom}></div>
+                                <div className={styles.content_bottom}>
+                                    {
+                                        topArtist.map((artist, index) => {
+                                            return (
+                                                <div className={styles.artist} key={index}>
+                                                    <Link href="">
+                                                        <img src={artist.images[1].url} alt="" />
+                                                    </Link >
+                                                    <Link href="">
+                                                        <p className={styles.artist_name}>{artist.name}</p>
+                                                    </Link>
+                                                </div>
+                                            )
+                                        })
+
+                                    }
+                                </div>
+                            </div>
+
+                            <div className={styles.content_left}>
+                                <div className={styles.content_top}>
+                                    <h2>Top Tracks of All Time</h2>
+                                    <Link href="">
+                                        <button className={styles.btn}>
+                                            see more
+                                        </button>
+                                    </Link>
+                                </div>
+                                <div className={styles.content_bottom}>
+                                    {
+                                        topTracks.map((track, index) => {
+                                            return (
+                                                <div className={styles.artist} key={index}>
+                                                    <div className={styles.artist_left}>
+                                                        <Link href="">
+                                                            <img src={track.album.images[2].url} alt="" />
+                                                        </Link>
+                                                        <Link href="">
+                                                            <div className={styles.artist_info}>
+                                                                <p className={styles.track_name}>{track.name}</p>
+                                                                <p className={styles.artist_name}>{track.album.artists[0].name} . {track.album.name}</p>
+                                                            </div>
+                                                        </Link>
+                                                    </div>
+                                                    <p className={styles.track_time}>{convertToMintes(track.duration_ms)}</p>
+                                                </div>
+                                            )
+                                        })
+
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
