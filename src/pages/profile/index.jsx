@@ -5,7 +5,8 @@ import RootLayout from "@/app/layout";
 import SpotifyWebApi from "spotify-web-api-js";
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import { getAcessToken } from "@/app/get-acesstoken";
+import { token } from "@/app/info";
+import { logout } from "@/app/info";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -19,14 +20,10 @@ const Profile = () => {
     const [topTracks, setTopTracks] = useState([])
     const TrackId = []
     useEffect(() => {
-        const spotifyToken = getAcessToken().access_token
-
-        if (spotifyToken) {
-            setSpotifyToken(spotifyToken)
-            spotifyApi.setAccessToken(spotifyToken)
-        }
+            spotifyApi.setAccessToken(`${token}`)
     }, [])
-
+    
+   
     useEffect(() => {
         spotifyApi.getMe().then((user) => {
             if (user) {
@@ -56,7 +53,6 @@ const Profile = () => {
         const secondsString = ((minutes % 1) * 60).toFixed(0).toString().padStart(2, '0');
         return `${minutesString}:${secondsString}`;
     }
-    console.log(topTracks)
     return (
         <div>
             <RootLayout showSidebar={true}>
