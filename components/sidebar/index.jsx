@@ -1,8 +1,6 @@
 import styles from "./styles.module.scss";
-import "../../../app/globals.css";
 import Link from "next/link";
-import { useEffect } from "react";
-export default function Index() {
+export default function Sidebar() {
   
     return (
         <nav className={styles.nav}>

@@ -1,9 +1,9 @@
-import "../../app/globals.css";
+import "../globals.css";
 import styles from "./styles.module.scss";
 import SpotifyWebApi from "spotify-web-api-js";
-import { token } from "@/app/info";
+import { token } from "../lib/info";
 import { use, useEffect, useState } from "react";
-import RootLayout from "@/app/layout";
+import RootLayout from "../layout";
 
 const spotifyApi = new SpotifyWebApi();
 
