@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -22,8 +22,11 @@ const Profile = () => {
     useEffect(() => {
             spotifyApi.setAccessToken(`${data?.accessToken}`)
     }, [data])
+
+    const handleLogout = async () => {
+        await signOut({ callbackUrl: '/' })
+      };
     
-   
     useEffect(() => {
         spotifyApi.getMe().then((user) => {
             if (user) {
@@ -85,9 +88,7 @@ const Profile = () => {
                                     <p>playlists</p>
                                 </div>
                             </div>
-                            <Link href="/" >
-                                <button className={styles.btn}>logout</button>
-                            </Link>
+                            <button onClick={handleLogout} className={styles.btn}>logout</button>
                         </div>
 
                         <div className={styles.content}>

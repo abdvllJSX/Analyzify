@@ -1,7 +1,6 @@
 "use client"
 import styles from "./styles.module.scss";
 import SpotifyWebApi from "spotify-web-api-js";
-import { token } from "../../lib/info";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 
@@ -34,7 +33,6 @@ export default function TopArtists() {
         })
     }
 
-    console.log(topArtistData.items)
 
     return (
             <section className={styles.TopArtists_container}>
