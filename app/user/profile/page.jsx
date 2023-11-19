@@ -1,12 +1,10 @@
+"use client"
 // pages/profile.js
 import { useState, useEffect } from "react";
-import "../../app/globals.css";
-import RootLayout from "@/app/layout";
 import SpotifyWebApi from "spotify-web-api-js";
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import { token } from "@/app/info";
-import { logout } from "@/app/info";
+import { useSession } from "next-auth/react";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -19,9 +17,11 @@ const Profile = () => {
     const [topArtist, setTopArtist] = useState([])
     const [topTracks, setTopTracks] = useState([])
     const TrackId = []
+    const { data } = useSession()
+    
     useEffect(() => {
-            spotifyApi.setAccessToken(`${token}`)
-    }, [])
+            spotifyApi.setAccessToken(`${data?.accessToken}`)
+    }, [data])
     
    
     useEffect(() => {
@@ -45,7 +45,7 @@ const Profile = () => {
             setTopTracks(track.items)
         })
 
-    }, [spotifyApi])
+    }, [spotifyApi, data])
 
     function convertToMintes(milliseconds) {
         const minutes = milliseconds / 60000;
@@ -55,7 +55,6 @@ const Profile = () => {
     }
     return (
         <div>
-            <RootLayout showSidebar={true}>
                 <main className={styles.profile}>
                     <div className={styles.profile__container}>
                         <div className={styles.header}>
@@ -149,14 +148,12 @@ const Profile = () => {
                                                 </div>
                                             )
                                         })
-
                                     }
                                 </div>
                             </div>
                         </div>
                     </div>
                 </main>
-            </RootLayout>
         </div>
     );
 };
