@@ -1,21 +1,22 @@
-import "../globals.css";
+"use client"
 import styles from "./styles.module.scss";
 import SpotifyWebApi from "spotify-web-api-js";
-import { token } from "../lib/info";
-import { use, useEffect, useState } from "react";
-import RootLayout from "../layout";
+import { token } from "../../lib/info";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 const spotifyApi = new SpotifyWebApi();
 
 export default function TopArtists() {
     const [topArtistData, setTopArtistData] = useState([])
-
+    const { data } = useSession()
+    
     useEffect(() => {
-        spotifyApi.setAccessToken(`${token}`)
+        spotifyApi.setAccessToken(`${data?.accessToken}`)
         spotifyApi.getMyTopArtists({ time_range: "long_term", limit: "50" }).then((Artist) => {
             setTopArtistData(Artist)
         })
-    }, [])
+    }, [data])
     const handleTimeRangeLong = () => {
         spotifyApi.getMyTopArtists({ time_range: "long_term", limit: "50" }).then((Artist) => {
             setTopArtistData(Artist)
@@ -36,7 +37,6 @@ export default function TopArtists() {
     console.log(topArtistData.items)
 
     return (
-        <RootLayout showSidebar={true}>
             <section className={styles.TopArtists_container}>
                 <div className={styles.TopArtists_wrapper}>
                     <div className={styles.TopArtists}>
@@ -67,6 +67,5 @@ export default function TopArtists() {
                     </div>
                 </div>
             </section>
-        </RootLayout>
     )
 }
