@@ -24,32 +24,30 @@ export default function TopArtists() {
     return (
         <section className={styles.TopArtists_container}>
             <div className={styles.TopArtists_wrapper}>
-                <div className={styles.TopArtists}>
-                    <div className={styles.nav}>
-                        <h2 className={styles.logo}>
-                            Top Artists
-                        </h2>
+                <div className={styles.nav}>
+                    <h2 className={styles.logo}>
+                        Top Artists
+                    </h2>
 
-                        <ul className={styles.nav__right}>
-                            <li onClick={() => { setRange("long_term") }}>All Time</li>
-                            <li onClick={() => { setRange("short_term") }}>Last 6 Months</li>
-                            <li onClick={() => { setRange("long_term") }}>Last 4 Weeks</li>
-                        </ul>
-                    </div>
-
-                    <main className={styles.main}>
-                        {
-                            topArtistData.items && topArtistData.items.map((artist, index) => {
-                                return (
-                                    <div className={styles.top_boy} key={index}>
-                                        <img src={artist.images[0].url} alt="" />
-                                        <p className={styles.top_boy_name}>{artist.name}</p>
-                                    </div>
-                                )
-                            })
-                        }
-                    </main>
+                    <ul className={styles.nav__right}>
+                        <li onClick={() => { setRange("long_term") }} style={range === "long_term" ? { color: "#ffffff", borderBottom: "1px solid #ffffff" } : {}}>All Time</li>
+                        <li onClick={() => { setRange("medium_term") }} style={range === "medium_term" ? { color: "#ffffff", borderBottom: "1px solid #ffffff" } : {}}>Last 6 Months</li>
+                        <li onClick={() => { setRange("short_term") }} style={range === "short_term" ? { color: "#ffffff", borderBottom: "1px solid #ffffff" } : {}}>Last 4 Weeks</li>
+                    </ul>
                 </div>
+
+                <main className={styles.main}>
+                    {
+                        topArtistData.items && topArtistData.items.map((artist, index) => {
+                            return (
+                                <div className={styles.top_boy} key={index}>
+                                    <img src={artist.images[0].url} alt="" />
+                                    <p className={styles.top_boy_name}>{artist.name}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </main>
             </div>
         </section>
     )

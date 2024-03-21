@@ -1,63 +1,62 @@
 @import "../../styles/main.scss";
 
-.TopArtists_container{
+.TopArtists_container {
     padding-left: toRem(80);
 
-    .TopArtists_wrapper{
+    .TopArtists_wrapper {
         width: 100%;
         margin: 0px auto;
         max-width: toRem(1400);
         min-height: 100vh;
         padding: toRem(65);
         background-color: $primary;
-        
-        .TopArtists{
 
-            .nav{
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            ul {
                 display: flex;
-                justify-content: space-between;
-                align-items: center;
+                column-gap: toRem(15);
 
-                ul{
-                    display: flex;
-                    column-gap: toRem(15);
+                li {
+                    font-family: "Book";
+                    font-size: 1.7rem;
+                    color: $unActive;
+                    cursor: pointer;
+                }
 
-                    li{
-                        font-family: "Book";
-                        font-size: 1.7rem;
-                        color: $unActive;
-                    }
-
-                    .active{
-                        color: inherit;
-                    }
+                .active {
+                    color: inherit;
                 }
             }
+        }
 
-            .main{
-                margin-top: toRem(50);
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(toRem(150), 1fr));
-                gap: toRem(20);
+        .main {
+            margin-top: toRem(50);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(toRem(150), 1fr));
+            gap: toRem(20);
 
-                .top_boy{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    
+            .top_boy {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 
-                    img{
-                        border-radius: 100%;
-                        object-fit: cover;
-                        width: toRem(150);
-                        height: toRem(150);
-                        margin: toRem(10);
-                    }
 
-                    &_name{
-                        font-size: 1.7rem;
-                        font-family: "Book";
-                    }
+                img {
+                    border-radius: 100%;
+                    object-fit: cover;
+                    width: toRem(150);
+                    height: toRem(150);
+                    margin: toRem(10);
+                }
+
+                &_name {
+                    font-size: 1.7rem;
+                    font-family: "Book";
                 }
             }
         }

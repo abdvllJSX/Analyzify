@@ -5,6 +5,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import { convertToMintes } from "../../../components/utilis";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -50,12 +51,7 @@ const Profile = () => {
 
     }, [spotifyApi, data])
 
-    function convertToMintes(milliseconds) {
-        const minutes = milliseconds / 60000;
-        const minutesString = Math.floor(minutes).toString();
-        const secondsString = ((minutes % 1) * 60).toFixed(0).toString().padStart(2, '0');
-        return `${minutesString}:${secondsString}`;
-    }
+  
     return (
         <div>
             <main className={styles.profile}>

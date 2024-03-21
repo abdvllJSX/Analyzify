@@ -1,0 +1,110 @@
+@import "../../styles/main.scss";
+
+.container {
+    padding-left: toRem(80);
+
+    .wrapper {
+        width: 100%;
+        margin: 0px auto;
+        max-width: toRem(1400);
+        min-height: 100vh;
+        padding: toRem(65);
+        background-color: $primary;
+
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            ul {
+                display: flex;
+                column-gap: toRem(15);
+
+                li {
+                    font-family: "Book";
+                    font-size: 1.7rem;
+                    color: $unActive;
+                    cursor: pointer;
+                }
+
+                .active {
+                    color: inherit;
+                }
+            }
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            row-gap: 3rem;
+            margin-top: 7rem;
+
+            .track_wrapper {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+
+                &:hover  {
+                    opacity: 1;
+
+                }
+
+                .track_profile {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 2rem;
+
+                    .img_container {
+                        width: 7rem;
+                        position: relative;
+                        height: 7rem;
+
+                        .overlay {
+                            position: absolute;
+                            background-color: rgba(0, 0, 0, 0.5);
+                            opacity: 0;
+                            inset: 0;
+
+                            img {
+                                position: relative;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                                width: 2.5rem;
+                            }
+                        }
+
+                        .artist_img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .track_info {
+                        .album_name {
+                            border-bottom: 1px solid transparent;
+                            margin-bottom: .5rem;
+                            color: #ffffff;
+                            font-size: 1.8rem;
+                        }
+
+                        .artist_name {
+                            color: rgb(155, 155, 155);
+                            font-size: 1.6rem;
+                            font-weight: 500;
+                        }
+                    }
+                }
+
+                .duration {
+                    color: rgb(155, 155, 155);
+                    font-size: 1.6rem;
+
+                }
+            }
+        }
+
+    }
+}

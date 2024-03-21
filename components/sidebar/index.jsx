@@ -37,7 +37,7 @@ export default function Sidebar() {
                     </Link>
                 </li>
                 <li className={styles.nav__middle__items}>
-                    <Link href="">
+                    <Link href="/user/top-tracks">
                         <svg
                             version="1.1"
                             id="Layer_1"
