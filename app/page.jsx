@@ -7,9 +7,9 @@ export default function Index() {
         <section className={styles.container}>
             <div className={styles.signup__wrapper}>
                 <h1>Analyzify<span>.</span></h1>
-                    <button onClick={()=>signIn("spotify",{callbackUrl:'/user/profile'})} className={styles.btn}>
-                        log in with spotify
-                    </button>
+                <button onClick={() => signIn("spotify", { callbackUrl: '/user/profile' })} className={styles.btn}>
+                    log in with spotify
+                </button>
             </div>
             <footer>
                 <p>Made by <span>404.DEV</span></p>

@@ -9,7 +9,7 @@ export const authOptions = {
       clientId: process.env.SPOTIFY_CLIENT_ID,
       clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
       redirectUri: process.env.SPOTIFY_REDIRECT_URI,
-      authorization:{params:{scope:'user-read-private user-read-email user-follow-read playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public user-top-read'}}
+      authorization:{params:{scope:'user-read-private user-read-email user-follow-read playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public user-top-read' }}
     }),
   ],
   callbacks: {

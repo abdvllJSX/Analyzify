@@ -1,0 +1,110 @@
+@import "../../../styles/main.scss";
+
+.container {
+    padding-left: toRem(80);
+
+    .wrapper {
+        width: 100%;
+        margin: 0px auto;
+        max-width: toRem(1400);
+        min-height: 100vh;
+        padding: toRem(65);
+        background-color: $primary;
+
+
+        .main {
+            .track_proflie {
+
+                display: flex;
+                gap: 5rem;
+
+                .album_img {
+                    width: 28rem;
+                }
+
+                .info {
+                    .track_name {
+                        font-size: 3.8rem;
+                        font-weight: 900;
+                        margin-bottom: 1rem;
+                    }
+
+                    .artist_name {
+                        font-size: 2.5rem;
+                        color: rgb(179, 179, 179);
+                        font-weight: 700;
+                        margin-bottom: 1.2rem;
+                    }
+
+                    .date {
+                        font-size: 1.9rem;
+                        color: rgb(179, 179, 179);
+                        margin-bottom: 1.2rem;
+                    }
+
+                    .btn {
+                        background-color: $generic-color;
+                        border: none;
+                        font-size: 1.4rem;
+                        font-family: 'Medium';
+                        color: white;
+                        cursor: pointer;
+                        border-radius: 1.5em;
+                        margin-top: 2.5rem;
+                        text-transform: uppercase;
+                        letter-spacing: .5px;
+                        padding: .8em 1.8em;
+
+                        @include mobile {
+                            padding: 1em 1.5em;
+                        }
+                    }
+                }
+            }
+
+            .track_feature_container {
+                display: grid;
+                width: 100%;
+                grid-template-columns: repeat(5, minmax(100px, 1fr));
+                border-top:  1px solid rgb(64, 64, 64);
+                border-left: 1px solid rgb(64, 64, 64);
+                margin-top: 8rem;
+
+                @include mobile{
+                    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                }
+
+                .track_feature {
+                    padding: 4rem 3rem;
+                    text-align: center;
+                    border-bottom: 1px solid rgb(64, 64, 64);
+                    border-right: 1px solid rgb(64, 64, 64);
+
+                    &_text{
+                        font-family: 'Bold';
+                        font-size: 3.4rem;
+                        color: rgb(179, 179, 179);
+                        margin-bottom: .8rem;
+                    }
+
+                    &_label{
+                        font-family: 'Book';
+                        color: rgb(179, 179, 179);
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+
+            .chart{
+                margin-top: 16rem;
+                border: 1px solid red;
+                width: 100%;
+                height: fit-content;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+    }
+}

@@ -91,7 +91,7 @@ const Profile = () => {
                         <div className={styles.content_right}>
                             <div className={styles.content_top}>
                                 <h2>Top Artists of All Time</h2>
-                                <Link href="">
+                                <Link href="/user/top-artist">
                                     <button className={styles.btn}>
                                         see more
                                     </button>
@@ -119,7 +119,7 @@ const Profile = () => {
                         <div className={styles.content_left}>
                             <div className={styles.content_top}>
                                 <h2>Top Tracks of All Time</h2>
-                                <Link href="">
+                                <Link href="/user/top-tracks">
                                     <button className={styles.btn}>
                                         see more
                                     </button>

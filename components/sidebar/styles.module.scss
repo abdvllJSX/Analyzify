@@ -68,12 +68,13 @@
         }
         svg {
           fill: currentColor;
-          width: Rem(50);
-          height: Rem(50);
+          width: 2.5rem;
+          height: 2.5rem;
           vertical-align: middle;
+
           @include mobile {
-            width: toRem(65);
-            height: toRem(65);
+            width: 6.5rem;
+            height: 6.5rem;
           }
         }
 
@@ -81,10 +82,11 @@
           font-size: 1.2rem;
           display: block;
           text-align: center;
+          margin-top: .3rem;
           text-transform: capitalize;
 
           @include mobile{
-            font-size: 5rem;
+            font-size: 4rem;
           }
         }
       }
