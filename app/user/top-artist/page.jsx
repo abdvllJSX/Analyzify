@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import SpotifyWebApi from "spotify-web-api-js";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -39,11 +40,11 @@ export default function TopArtists() {
                 <main className={styles.main}>
                     {
                         topArtistData.items && topArtistData.items.map((artist, index) => {
-                            return (
-                                <div className={styles.top_boy} key={index}>
+                            return ( 
+                                <Link href={`/user/top-artist/${artist.id}`} className={styles.top_boy} key={index}>
                                     <img src={artist.images[0].url} alt="" />
                                     <p className={styles.top_boy_name}>{artist.name}</p>
-                                </div>
+                                </Link>
                             )
                         })
                     }

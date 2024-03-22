@@ -25,7 +25,6 @@ const TopTracks = () => {
         GetTopTracks(range)
     }, [range, data])
 
-    console.log(TopTracksData)
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>

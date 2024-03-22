@@ -51,7 +51,7 @@ const Profile = () => {
 
     }, [spotifyApi, data])
 
-  
+
     return (
         <div>
             <main className={styles.profile}>
@@ -101,14 +101,10 @@ const Profile = () => {
                                 {
                                     topArtist.map((artist, index) => {
                                         return (
-                                            <div className={styles.artist} key={index}>
-                                                <Link href="">
-                                                    <img src={artist.images[1].url} alt="" />
-                                                </Link >
-                                                <Link href="">
-                                                    <p className={styles.artist_name}>{artist.name}</p>
-                                                </Link>
-                                            </div>
+                                            <Link href={`/user/top-artist/${artist.id}`} className={styles.artist} key={index}>
+                                                <img src={artist.images[1].url} alt="" />
+                                                <p className={styles.artist_name}>{artist.name}</p>
+                                            </Link>
                                         )
                                     })
 
@@ -130,17 +126,13 @@ const Profile = () => {
                                     topTracks.map((track, index) => {
                                         return (
                                             <div className={styles.artist} key={index}>
-                                                <div className={styles.artist_left}>
-                                                    <Link href="">
-                                                        <img src={track.album.images[2].url} alt="" />
-                                                    </Link>
-                                                    <Link href="">
-                                                        <div className={styles.artist_info}>
-                                                            <p className={styles.track_name}>{track.name}</p>
-                                                            <p className={styles.artist_name}>{track.album.artists[0].name} . {track.album.name}</p>
-                                                        </div>
-                                                    </Link>
-                                                </div>
+                                                <Link href={`/user/top-tracks/${track.id}`} className={styles.artist_left}>
+                                                    <img src={track.album.images[2].url} alt="" />
+                                                    <div className={styles.artist_info}>
+                                                        <p className={styles.track_name}>{track.name}</p>
+                                                        <p className={styles.artist_name}>{track.album.artists[0].name} . {track.album.name}</p>
+                                                    </div>
+                                                </Link>
                                                 <p className={styles.track_time}>{convertToMintes(track.duration_ms)}</p>
                                             </div>
                                         )

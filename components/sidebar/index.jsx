@@ -1,7 +1,12 @@
 import styles from "./styles.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+
+
 export default function Sidebar() {
-  
+    const router = useRouter();
+
     return (
         <nav className={styles.nav}>
             <div className={styles.logo}>
@@ -53,7 +58,7 @@ export default function Sidebar() {
                     </Link>
                 </li>
                 <li className={styles.nav__middle__items}>
-                    <Link href="">
+                    <Link href="/user/recents">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             version="1.1"
@@ -76,7 +81,7 @@ export default function Sidebar() {
                     </Link>
                 </li>
                 <li className={styles.nav__middle__items}>
-                    <Link href="">
+                    <Link href="/user/recents">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             version="1.1"

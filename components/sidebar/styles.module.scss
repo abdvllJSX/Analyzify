@@ -63,6 +63,16 @@
         width: 100%;
         height: 100%;
         display: block;
+        &:hover{
+          border-left: 4px solid $generic-color;
+          background-color: $primary;
+        }
+        &:hover > svg{
+          color: #fff;
+        }
+        &:hover > div{
+          color: #fff;
+        }
         @include mobile{
           padding: 0;
         }
@@ -71,6 +81,7 @@
           width: 2.5rem;
           height: 2.5rem;
           vertical-align: middle;
+
 
           @include mobile {
             width: 6.5rem;
