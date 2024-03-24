@@ -78,7 +78,7 @@ export default function Sidebar() {
                         <div className={styles.name}>recents</div>
                     </Link>
                 </li>
-                <li className={styles.nav__middle__items}>
+                {/* <li className={styles.nav__middle__items}>
                     <Link href="/user/recents">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +100,7 @@ export default function Sidebar() {
                         </svg>
                         <div className={styles.name}>profile</div>
                     </Link>
-                </li>
+                </li> */}
             </ul>
 
             <div className={styles.nav__github}>
