@@ -78,29 +78,7 @@ export default function Sidebar() {
                         <div className={styles.name}>recents</div>
                     </Link>
                 </li>
-                {/* <li className={styles.nav__middle__items}>
-                    <Link href="/user/recents">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            version="1.1"
-                            x="0px"
-                            y="0px"
-                            viewBox="0 0 405.333 405.333"
-                        >
-                            <g>
-                                <rect x="0" y="53.333" width="256" height="42.667"></rect>
-                                <rect x="0" y="138.667" width="256" height="42.667"></rect>
-                                <path
-                                    d="M298.667,53.333v174.613c-6.72-2.453-13.76-3.947-21.333-3.947c-35.307,0-64,28.693-64,64c0,35.307,28.693,64,64,64
-                               c-2.453-6.72-3.947-13.76-3.947-21.333c0-53.004,43.296-96.3,96.3-96.3s96.3,43.296,96.3,96.3v106.667c0,23.564,19.101,42.667,42.667,42.667
-                            s42.667-19.102,42.667-42.667V96H362.667v-42.667H298.667z"
-                                ></path>
-                                <rect x="0" y="224" width="170.667" height="42.667"></rect>
-                            </g>
-                        </svg>
-                        <div className={styles.name}>profile</div>
-                    </Link>
-                </li> */}
+              
             </ul>
 
             <div className={styles.nav__github}>
