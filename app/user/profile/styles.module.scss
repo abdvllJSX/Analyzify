@@ -2,7 +2,9 @@
 
 .profile {
     padding-left: toRem(80);
-
+    @include mobile {
+        padding-left: 0;
+    }
     &__container {
         width: 100%;
         margin: 0px auto;
@@ -11,15 +13,28 @@
         padding: toRem(65);
         background-color: $primary;
 
+        @include mobile {
+            width: 100vw;
+        }
+
         .header {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
 
+            @include mobile {
+                margin-top: 8rem;
+            }
+
             &__image {
                 width: 150px;
                 height: 150px;
+
+                @include mobile {
+                    width: 60rem;
+                    height: 60rem;
+                }
 
                 .avater {
                     border: 2px solid currentcolor;
@@ -29,7 +44,6 @@
                     svg {
                         fill: currentColor;
                         vertical-align: middle;
-
                     }
                 }
             }
@@ -38,13 +52,27 @@
                 font-size: 1.5rem;
                 margin-top: toRem(30);
                 font-weight: 700;
-                font-family: 'Book';
+                font-family: "Book";
                 letter-spacing: 1px;
                 border: 1px solid rgb(255, 255, 255);
                 text-transform: uppercase;
                 text-align: center;
                 padding: 1rem 3.5rem;
                 border-radius: toRem(30);
+                &:hover {
+                    background-color: #fff;
+                    transition: background-color color 0.5s ease-in-out;
+                    cursor: pointer;
+                    color: black;
+                }
+
+                @include mobile {
+                    font-family: "Book";
+                    font-size: 4rem;
+                    padding: 4.5rem 10rem;
+                    margin-top: 13rem;
+                    border-radius: 6rem;
+                }
             }
         }
 
@@ -56,13 +84,22 @@
                 border-radius: 50%;
                 width: 100%;
             }
+
+            @include mobile {
+                width: 60rem;
+                height: 60rem;
+            }
         }
 
         .user__name {
             margin-top: toRem(25);
             text-align: center;
-            font-family: 'Bold';
+            font-family: "Bold";
             font-size: toRem(40);
+            @include mobile {
+                margin-top: 6rem;
+                font-size: 12rem;
+            }
         }
 
         .header__info {
@@ -72,19 +109,31 @@
             gap: toRem(30);
             margin-top: toRem(20);
 
+            @include mobile {
+                width: 88%;
+                justify-content: space-between;
+                margin-top: 4rem;
+            }
+
             .followers {
                 font-size: 2rem;
                 color: $generic-color;
                 font-family: "Medium";
+
+                @include mobile {
+                    font-size: 7rem;
+                }
             }
 
             p {
                 text-transform: uppercase;
                 margin-top: toRem(6);
+                font-family: "Book";
                 color: $unActive;
+                @include mobile {
+                    font-size: 4.5rem;
+                }
             }
-
-
         }
 
         .content {
@@ -93,6 +142,12 @@
             justify-content: space-between;
             width: 100%;
             gap: toRem(70);
+
+            @include mobile {
+                flex-direction: column;
+                margin-top: 15rem;
+                margin-bottom: 15rem;
+            }
 
             &_right {
                 flex: 1;
@@ -103,16 +158,40 @@
                     align-items: center;
                     margin-bottom: toRem(40);
 
+                    @include mobile {
+                        margin-top: 8rem;
+                        margin-bottom: 15rem;
+                    }
+
+                    h2{
+                        @include mobile{
+                            font-size: 6.3rem;
+    
+                        }
+                    }
+                   
                     .btn {
                         font-size: 1.3rem;
                         font-weight: 700;
-                        font-family: 'Book';
+                        font-family: "Book";
                         letter-spacing: 1px;
                         border: 1px solid rgb(255, 255, 255);
                         text-transform: uppercase;
                         text-align: center;
                         padding: 1rem 2.5rem;
                         border-radius: toRem(30);
+                        &:hover {
+                            background-color: #fff;
+                            transition: background-color color 0.5s ease-in-out;
+                            cursor: pointer;
+                            color: black;
+                        }
+                        @include mobile {
+                            font-family: "Book";
+                            font-size: 4rem;
+                            padding: 3rem 7rem;
+                            border-radius: 6rem;
+                        }
                     }
                 }
 
@@ -122,12 +201,21 @@
                         align-items: center;
                         gap: toRem(5);
                         margin-bottom: toRem(30);
+                        @include mobile {
+                            margin-bottom: 6rem;
+                        }
 
                         img {
                             width: toRem(45);
                             height: toRem(45);
                             margin-right: toRem(20);
                             border-radius: 100%;
+
+                            @include mobile {
+                                width: 17rem;
+                                height: 17rem;
+                                margin-right: 6rem;
+                            }
                         }
 
                         &_name {
@@ -135,10 +223,11 @@
                             font-size: 1.9rem;
                             font-family: "Book";
                             font-weight: 500;
+                            @include mobile {
+                                font-size: 6rem;
+                            }
                         }
                     }
-
-
                 }
             }
 
@@ -151,16 +240,42 @@
                     justify-content: space-between;
                     margin-bottom: toRem(40);
 
+                    @include mobile {
+                        margin-top: 8rem;
+                        margin-bottom: 15rem;
+                    }
+
+                    h2 {
+                        @include mobile{
+                            font-size: 6.3rem;
+
+                        }
+                    }
+
                     .btn {
                         font-size: 1.3rem;
                         font-weight: 700;
-                        font-family: 'Book';
+                        font-family: "Book";
                         letter-spacing: 1px;
                         border: 1px solid rgb(255, 255, 255);
                         text-transform: uppercase;
                         text-align: center;
                         padding: 1rem 2.5rem;
                         border-radius: toRem(30);
+
+                        @include mobile {
+                            font-family: "Book";
+                            font-size: 4rem;
+                            padding: 3rem 7rem;
+                            border-radius: 6rem;
+                        }
+
+                        &:hover {
+                            background-color: #fff;
+                            transition: background-color color 0.5s ease-in-out;
+                            cursor: pointer;
+                            color: black;
+                        }
                     }
                 }
 
@@ -170,8 +285,11 @@
                         align-items: center;
                         justify-content: space-between;
                         margin-bottom: toRem(30);
+                        @include mobile {
+                            margin-bottom: 6rem;
+                        }
 
-                        &_left{
+                        &_left {
                             display: flex;
                             align-items: center;
                             gap: toRem(5);
@@ -179,27 +297,48 @@
                                 width: toRem(45);
                                 height: toRem(45);
                                 margin-right: toRem(20);
+                                @include mobile {
+                                    width: 17rem;
+                                    height: 17rem;
+                                    margin-right: 6rem;
+                                }
                             }
 
-                            .artist_info{
-                                .track_name{
+                            .artist_info {
+                                @include mobile {
+                                    width: 75%;
+                                    text-overflow: ellipsis;
+                                    text-wrap: nowrap;
+                                }
+                                .track_name {
                                     text-transform: capitalize;
                                     font-size: 1.9rem;
                                     font-family: "Book";
                                     font-weight: 500;
+                                    @include mobile {
+                                        font-size: 6rem;
+                                    }
                                 }
 
-                                .artist_name{
+                                .artist_name {
                                     margin-top: toRem(3);
                                     color: $unActive;
+                                    @include mobile {
+                                        font-size: 5rem;
+                                    }
                                 }
+                            }
+                        }
+
+                        .track_time {
+                            color: $unActive;
+                            @include mobile {
+                                font-size: 4rem;
                             }
                         }
                     }
                 }
             }
         }
-
-
     }
 }

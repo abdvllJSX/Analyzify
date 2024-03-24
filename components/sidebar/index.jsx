@@ -1,11 +1,9 @@
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 
 
 export default function Sidebar() {
-    const router = useRouter();
 
     return (
         <nav className={styles.nav}>

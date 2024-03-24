@@ -1,22 +1,18 @@
-"use client"
-import { useSession } from "next-auth/react"
-import { useRouter } from "next/navigation"
-import Sidebar from "../../components/sidebar"
+import { Suspense } from "react";
+import Sidebar from "../../components/sidebar";
+import Loading from "../loading";
 
-const layout = ({children}) => {
-    const { status } = useSession()
-    const router = useRouter()
-    status === "unauthenticated" && router.push('/') 
+const layout = ({ children }) => {
   return (
     <div>
-        {status !== "unauthenticated" && 
+      {
         <>
           <Sidebar />
-          {children}
+          <Suspense fallback={<Loading />}>{children}</Suspense>
         </>
-        }
+      }
     </div>
-  )
-}
+  );
+};
 
-export default layout
+export default layout;

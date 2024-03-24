@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import styles from "./styles.module.scss"
 import { useSession } from "next-auth/react";
 import SpotifyWebApi from "spotify-web-api-js";
+import Loading from "../../../loading";
 
 
 const spotifyApi = new SpotifyWebApi()
 
 const Artist = ({ params }) => {
     const [artist, setArtist] = useState()
+    const [loading, setloading] = useState(false)
 
     const { data } = useSession()
     useEffect(() => {
@@ -16,6 +18,7 @@ const Artist = ({ params }) => {
         const GetArtist = () => {
             spotifyApi.getArtist(params.id).then(artist => {
                 setArtist(artist)
+                setloading(true)
             })
         }
 
@@ -25,7 +28,7 @@ const Artist = ({ params }) => {
     console.log(artist)
     return (
         <div className={styles.container}>
-            {
+            {loading ?
                 artist && (
                     <>
                         <img src={artist.images[1].url} alt="" className={styles.artist_img} />
@@ -49,6 +52,8 @@ const Artist = ({ params }) => {
                     </>
 
                 )
+                :
+                <Loading />
             }
         </div>
     );

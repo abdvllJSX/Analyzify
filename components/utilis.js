@@ -1,3 +1,5 @@
+// "use client";
+
 export function convertToMintes(milliseconds) {
     const minutes = milliseconds / 60000;
     const minutesString = Math.floor(minutes).toString();

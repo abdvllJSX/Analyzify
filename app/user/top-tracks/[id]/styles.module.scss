@@ -3,6 +3,9 @@
 .container {
     padding-left: toRem(80);
 
+    @include mobile {
+        padding-left: 0;
+    }
     .wrapper {
         width: 100%;
         margin: 0px auto;
@@ -14,12 +17,20 @@
 
         .main {
             .track_proflie {
-
                 display: flex;
                 gap: 5rem;
+                @include mobile{
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 8rem;
+                    justify-content: center;
+                }
 
                 .album_img {
                     width: 28rem;
+                    @include mobile{
+                        width: 70rem;
+                    }
                 }
 
                 .info {
@@ -27,6 +38,11 @@
                         font-size: 3.8rem;
                         font-weight: 900;
                         margin-bottom: 1rem;
+                        @include mobile{
+                            font-size: 11rem;
+                            text-align: center;
+                            margin-bottom: 2rem;
+                        }
                     }
 
                     .artist_name {
@@ -34,12 +50,22 @@
                         color: rgb(179, 179, 179);
                         font-weight: 700;
                         margin-bottom: 1.2rem;
+                        @include mobile{
+                            font-size: 8rem;
+                            text-align: center;
+                        }
                     }
 
                     .date {
                         font-size: 1.9rem;
                         color: rgb(179, 179, 179);
                         margin-bottom: 1.2rem;
+
+                        @include mobile{
+                            font-size: 6rem;
+                            text-align: center;
+                            margin-bottom: 3rem;
+                        }
                     }
 
                     .btn {
@@ -56,6 +82,8 @@
                         padding: .8em 1.8em;
 
                         @include mobile {
+                            font-size: 5rem;
+                            margin-top: 8rem;
                             padding: 1em 1.5em;
                         }
                     }
@@ -72,6 +100,7 @@
 
                 @include mobile{
                     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                    margin-top: 25rem;
                 }
 
                 .track_feature {
@@ -80,17 +109,26 @@
                     border-bottom: 1px solid rgb(64, 64, 64);
                     border-right: 1px solid rgb(64, 64, 64);
 
+                
+
                     &_text{
                         font-family: 'Bold';
                         font-size: 3.4rem;
                         color: rgb(179, 179, 179);
                         margin-bottom: .8rem;
+
+                        @include mobile{
+                            font-size: 6rem;
+                        }
                     }
 
                     &_label{
                         font-family: 'Book';
                         color: rgb(179, 179, 179);
                         font-size: 1.5rem;
+                        @include mobile{
+                            font-size: 4rem;
+                        }
                     }
                 }
             }
@@ -102,6 +140,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
+                @include mobile{
+                    display: none;
+                }
             }
         }
 

@@ -5,12 +5,14 @@ import { useSession } from "next-auth/react";
 import SpotifyWebApi from "spotify-web-api-js";
 import { convertToMintes } from "../../../components/utilis";
 import Link from "next/link";
+import Loading from "../../loading";
 
 const spotifyApi = new SpotifyWebApi()
 
 const TopTracks = () => {
     const [TopTracksData, setTopTracksData] = useState([])
     const [isHovered, setIsHovered] = useState(false)
+    const [loading, setloading] = useState(false)
     const [range, setRange] = useState("long_term")
     const { data } = useSession()
 
@@ -19,6 +21,7 @@ const TopTracks = () => {
         const GetTopTracks = (time) => {
             spotifyApi.getMyTopTracks({ time_range: `${time}`, limit: "50" }).then(track => {
                 setTopTracksData(track)
+                setloading(true)
             })
         }
 
@@ -42,6 +45,7 @@ const TopTracks = () => {
 
                 <main className={styles.main}>
                     {
+                        loading ?
                         TopTracksData.items && TopTracksData.items.map((track, id) => {
                             return (
                                 <Link href={`/user/top-tracks/${track.id}`} className={styles.track_wrapper} key={id}>
@@ -62,6 +66,8 @@ const TopTracks = () => {
                                 </Link>
                             )
                         })
+                        : 
+                        <Loading />
                     }
                 </main>
             </div>

@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import SpotifyWebApi from "spotify-web-api-js";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import Loading from "../../loading";
 import Link from "next/link";
 
 const spotifyApi = new SpotifyWebApi();
@@ -10,6 +11,7 @@ const spotifyApi = new SpotifyWebApi();
 export default function TopArtists() {
     const [topArtistData, setTopArtistData] = useState([])
     const [range, setRange] = useState("long_term")
+    const [loading, setloading] = useState(false)
     const { data } = useSession()
 
     useEffect(() => {
@@ -17,6 +19,7 @@ export default function TopArtists() {
         const handleTimeRange = (time) => {
             spotifyApi.getMyTopArtists({ time_range: `${time}`, limit: "50" }).then((Artist) => {
                 setTopArtistData(Artist)
+                setloading(true)
             })
         }
         handleTimeRange(range)
@@ -38,7 +41,7 @@ export default function TopArtists() {
                 </div>
 
                 <main className={styles.main}>
-                    {
+                    {loading ?
                         topArtistData.items && topArtistData.items.map((artist, index) => {
                             return ( 
                                 <Link href={`/user/top-artist/${artist.id}`} className={styles.top_boy} key={index}>
@@ -47,6 +50,8 @@ export default function TopArtists() {
                                 </Link>
                             )
                         })
+                        : 
+                        <Loading />
                     }
                 </main>
             </div>

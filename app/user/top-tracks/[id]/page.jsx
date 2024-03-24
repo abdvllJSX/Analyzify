@@ -5,6 +5,7 @@ import styles from "./styles.module.scss"
 import { extractYearFromDate, convertToMintes } from "../../../../components/utilis";
 import SpotifyWebApi from "spotify-web-api-js";
 import BarChart from "../../../../components/barchart";
+import Loading from "../../../loading";
 
 const spotifyApi = new SpotifyWebApi()
 
@@ -14,7 +15,7 @@ const Track = ({ params }) => {
     const [track, setTrack] = useState()
     const [audioFeatures, setAudioFeatures] = useState()
     const [audioAnalysis, setAudioAnalysis] = useState()
-
+    const [loading, setloading] = useState(false)
     useEffect(() => {
         spotifyApi.setAccessToken(`${data?.accessToken}`)
         const GetTopTracks = () => {
@@ -26,6 +27,7 @@ const Track = ({ params }) => {
             })
             spotifyApi.getAudioAnalysisForTrack(params.id).then(track => {
                 setAudioAnalysis(track)
+                setloading(true)
             })
         }
         GetTopTracks()
@@ -59,7 +61,10 @@ const Track = ({ params }) => {
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                <div className={styles.main}>
+              {
+                loading ?
+                (
+                    <div className={styles.main}>
                     <div className={styles.track_proflie}>
                         {
                             track && (
@@ -131,6 +136,10 @@ const Track = ({ params }) => {
                         )
                     }
                 </div>
+                ) : (
+                    <Loading />
+                )
+              }
             </div>
         </div>
     );

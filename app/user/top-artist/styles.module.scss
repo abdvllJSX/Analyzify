@@ -3,6 +3,11 @@
 .TopArtists_container {
     padding-left: toRem(80);
 
+    @include mobile {
+        padding: 0;
+        padding-bottom: 25rem;
+    }
+
     .TopArtists_wrapper {
         width: 100%;
         margin: 0px auto;
@@ -10,22 +15,46 @@
         min-height: 100vh;
         padding: toRem(65);
         background-color: $primary;
-
+        @include mobile{
+            margin-top: 8rem;
+        }
 
         .nav {
             display: flex;
             justify-content: space-between;
+            position: relative;
+            z-index: 3;
             align-items: center;
 
+            @include mobile {
+                flex-direction: column;
+                margin-bottom: 15rem;
+                row-gap: 12rem;
+            }
+
+            .logo {
+                @include mobile {
+                    font-size: 8rem;
+                }
+            }
             ul {
                 display: flex;
                 column-gap: toRem(15);
+                @include mobile {
+                    width: 90%;
+                    border: 1px solid reds;
+                    justify-content: space-between;
+                }
 
                 li {
                     font-family: "Book";
                     font-size: 1.7rem;
                     color: $unActive;
                     cursor: pointer;
+
+                    @include mobile {
+                        font-size: 5rem;
+                    }
                 }
 
                 .active {
@@ -40,11 +69,14 @@
             grid-template-columns: repeat(auto-fit, minmax(toRem(150), 1fr));
             gap: toRem(20);
 
+            @include mobile {
+                grid-template-columns: repeat(auto-fit, minmax(toRem(300), 1fr));
+                gap: 20rem;
+            }
             .top_boy {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-
 
                 img {
                     border-radius: 100%;
@@ -52,11 +84,21 @@
                     width: toRem(150);
                     height: toRem(150);
                     margin: toRem(10);
+
+                    @include mobile {
+                        width: toRem(300);
+                        height: toRem(300);
+                        margin-bottom: 5rem;
+                    }
                 }
 
                 &_name {
                     font-size: 1.7rem;
                     font-family: "Book";
+
+                    @include mobile {
+                        font-size: 6rem;
+                    }
                 }
             }
         }

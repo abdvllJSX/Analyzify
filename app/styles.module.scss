@@ -1,4 +1,4 @@
-@import 'styles/main.scss';
+@import "styles/main.scss";
 
 .container {
     width: 100vw;
@@ -9,15 +9,12 @@
     align-items: center;
     justify-content: center;
 
-
-
     .signup__wrapper {
-
         h1 {
             font-size: toRem(32);
             margin-bottom: toRem(17);
             text-align: center;
-            font-family: 'Book';
+            font-family: "Book";
 
             span {
                 color: $generic-color;
@@ -26,11 +23,10 @@
             @include mobile {
                 font-size: toRem(70);
                 margin-bottom: toRem(45);
-                font-family: 'Book';
+                font-family: "Book";
                 font-weight: 500;
             }
         }
-
 
         .btn {
             background-color: $generic-color;
@@ -41,11 +37,12 @@
             cursor: pointer;
             border-radius: 1.5em;
             text-transform: uppercase;
-            letter-spacing: .5px;
+            letter-spacing: 0.5px;
             padding: 1em 2em;
 
             @include mobile {
                 padding: 1em 1.5em;
+                font-weight: 500;
             }
         }
     }
@@ -64,4 +61,30 @@
             bottom: 6rem;
         }
     }
+}
+
+.loader {
+    width: 100%;
+    display: grid;
+    place-content: center;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: $primary;
+    .bars {
+        width: 50.4px;
+        height: 44.8px;
+        background: linear-gradient(#0000 calc(1*100%/6),$unActive 0 calc(3*100%/6),#0000 0) left bottom,
+             linear-gradient(#0000 calc(2*100%/6),$unActive 0 calc(4*100%/6),#0000 0) center bottom,
+             linear-gradient(#0000 calc(3*100%/6),$unActive 0 calc(5*100%/6),#0000 0) right bottom;
+        background-size: 10.1px 600%;
+        background-repeat: no-repeat;
+        animation: bars-j7enxv 1s infinite linear;
+     }
+     
+     @keyframes bars-j7enxv {
+        100% {
+           background-position: left top,center top,right top;
+        }
+     }
 }

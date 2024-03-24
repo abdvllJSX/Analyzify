@@ -8,6 +8,7 @@
   top: 0;
   left: 0;
   position: fixed;
+  z-index: 3;
   background: $very-dark;
   justify-content: space-between;
   align-items: center;
@@ -66,6 +67,9 @@
         &:hover{
           border-left: 4px solid $generic-color;
           background-color: $primary;
+          @include mobile{
+            border-left: none;
+          }
         }
         &:hover > svg{
           color: #fff;
